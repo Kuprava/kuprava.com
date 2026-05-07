@@ -89,6 +89,17 @@
             align-self: center;
         }
 
+        .pp-nav-cta {
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        }
+
+        .pp-nav-cta.is-hidden {
+            opacity: 0;
+            transform: translateY(-6px);
+            pointer-events: none;
+            visibility: hidden;
+        }
+
         .btn-primary {
             --bs-btn-bg: var(--pp-accent);
             --bs-btn-border-color: var(--pp-accent);
@@ -394,7 +405,7 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="pp-nav-cluster ms-lg-auto">
-                    <a class="btn btn-primary"
+                    <a class="btn btn-primary pp-nav-cta" data-nav-cta
                         href="mailto:hello@kuprava.com?subject=20-minute%20call%20-%20where%20we%27re%20leaking%20time%20or%20money">Book a 20-min call</a>
                     <ul class="navbar-nav flex-lg-row align-items-lg-center mb-0">
                         <li class="nav-item">
@@ -415,14 +426,12 @@
     <header class="hero-section text-white">
         <div class="container py-5" style="padding-top: 3.25rem; padding-bottom: 4rem;">
             <div class="hero-content">
-                <p class="small text-white-50 text-uppercase fw-semibold mb-2 brand-kicker">Kuprava</p>
                 <h1 class="display-5 fw-bold">Your systems aren’t broken. They’re just not talking properly - and it’s costing you money.</h1>
                 <p class="lead fw-semibold text-white">If your NetSuite numbers don’t match reality, you don’t have a reporting problem - you have an integration problem.</p>
                 <p class="mb-4 hero-body-muted">Billing that won’t tie out. Inventory that lies. The same spreadsheet fixes every month. <strong class="text-white">Kuprava</strong> connects NetSuite to CRM, commerce, tax, and middleware so finance can trust the numbers again - without hiring another full-time firefighter.</p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a class="btn btn-light btn-lg"
+                    <a class="btn btn-light btn-lg" data-hero-cta
                         href="mailto:hello@kuprava.com?subject=20-minute%20call%20-%20where%20we%27re%20leaking%20time%20or%20money">Book a 20-min call <span aria-hidden="true">→</span></a>
-                    <a class="btn btn-outline-light btn-lg" href="tel:+18015106872">Call (801) 510-6872</a>
                 </div>
                 <p class="hero-trust mb-0">Clients usually bring us in after internal fixes, contractors, or off-the-shelf connectors stopped holding up in production.</p>
             </div>
@@ -630,6 +639,27 @@
         }
 
         setCopyrightYear();
+
+        // Hide the nav CTA while the hero CTA is in view, then fade it in on scroll
+        (function () {
+            var heroCta = document.querySelector('[data-hero-cta]');
+            var navCta = document.querySelector('[data-nav-cta]');
+            if (!heroCta || !navCta || !('IntersectionObserver' in window)) return;
+
+            navCta.classList.add('is-hidden');
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        navCta.classList.add('is-hidden');
+                    } else {
+                        navCta.classList.remove('is-hidden');
+                    }
+                });
+            }, { threshold: 0 });
+
+            observer.observe(heroCta);
+        })();
     </script>
 </body>
 
