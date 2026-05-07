@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 320" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Kuprava logo</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Minimalist geometric K monogram with wordmark for Kuprava</desc>
+
+  <defs>
+    
+  </defs>
+
+  <!-- Vertical stem -->
+  <rect x="294" y="100" width="10" height="80" rx="1" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Upper arm -->
+  <polygon points="304,140 340,100 352,100 316,143" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Lower arm -->
+  <polygon points="304,142 340,180 352,180 316,142" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- WORDMARK -->
+  <text x="340" y="224" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="400" letter-spacing="10" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, &quot;Times New Roman&quot;, serif;font-size:28px;font-weight:400;text-anchor:middle;dominant-baseline:auto">KUPRAVA</text>
+
+  <!-- Tagline -->
+  <text x="340" y="248" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="10" letter-spacing="3" style="fill:rgb(107, 106, 102);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, &quot;Times New Roman&quot;, serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">ERP integration &amp; beyond</text>
+
+</svg>

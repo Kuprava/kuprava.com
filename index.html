@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kuprava - NetSuite integrations &amp; financial workflows</title>
+    <meta name="description"
+        content="Wrong NetSuite numbers, billing that won’t tie out, integrations that keep breaking? Kuprava fixes the expensive gaps - NetSuite, MuleSoft, Shopify, Salesforce, AWS. Book a 20-min call.">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="img/kuprava-favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pp-navy: #1a2540;
+            --pp-navy-deep: #121a2e;
+            --pp-accent: #2c6a8a;
+            --pp-accent-hover: #245773;
+            --pp-bg: #eef1f7;
+            --pp-surface: #ffffff;
+            --pp-text: #1a1f2e;
+            --pp-muted: #5c6678;
+            --pp-border: #d8dee9;
+        }
+
+        .pp-page {
+            font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+            color: var(--pp-text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h2,
+        h3,
+        h4,
+        .display-5,
+        .display-6 {
+            color: var(--pp-navy);
+            letter-spacing: -0.02em;
+        }
+
+        .pp-navbar {
+            background: rgba(255, 255, 255, 0.96) !important;
+            border-bottom: 1px solid var(--pp-border);
+            backdrop-filter: saturate(180%) blur(10px);
+        }
+
+        .pp-brand-logo {
+            display: block;
+            height: 64px;
+            width: auto;
+        }
+
+        @media (min-width: 992px) {
+            .pp-brand-logo {
+                height: 72px;
+            }
+        }
+
+        /* Align CTA + links on one baseline (screenshot: button floated high) */
+        .pp-nav-cluster {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 992px) {
+            .pp-nav-cluster {
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 1rem;
+            }
+        }
+
+        .pp-navbar .nav-link {
+            padding-top: 0.45rem;
+            padding-bottom: 0.45rem;
+            font-size: 0.9375rem;
+        }
+
+        .pp-navbar .btn-primary {
+            padding: 0.45rem 1rem;
+            font-size: 0.9375rem;
+            line-height: 1.4;
+            align-self: center;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--pp-accent);
+            --bs-btn-border-color: var(--pp-accent);
+            --bs-btn-hover-bg: var(--pp-accent-hover);
+            --bs-btn-hover-border-color: var(--pp-accent-hover);
+            --bs-btn-active-bg: var(--pp-accent-hover);
+            --bs-btn-active-border-color: var(--pp-accent-hover);
+            --bs-btn-focus-shadow-rgb: 44, 106, 138;
+            font-weight: 600;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: var(--pp-accent);
+            --bs-btn-border-color: var(--pp-accent);
+            --bs-btn-hover-bg: var(--pp-accent);
+            --bs-btn-hover-border-color: var(--pp-accent);
+            --bs-btn-active-bg: var(--pp-accent-hover);
+            --bs-btn-active-border-color: var(--pp-accent-hover);
+            --bs-btn-focus-shadow-rgb: 44, 106, 138;
+        }
+
+        .btn-lg {
+            border-radius: 0.5rem;
+            padding-left: 1.35rem;
+            padding-right: 1.35rem;
+        }
+
+        .hero-section {
+            position: relative;
+            background-image: url("img/HMB_Coastal_Trail.png");
+            background-size: cover;
+            background-position: center;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(118deg, rgba(18, 26, 46, 0.94) 0%, rgba(26, 37, 64, 0.82) 42%, rgba(44, 106, 138, 0.42) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 42rem;
+        }
+
+        .hero-section .display-5 {
+            line-height: 1.12;
+            color: #fff;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .hero-section .lead {
+            line-height: 1.4;
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem !important;
+        }
+
+        @media (min-width: 992px) {
+            .hero-section .lead {
+                font-size: 1.5rem;
+            }
+        }
+
+        .hero-section .hero-body-muted {
+            color: rgba(255, 255, 255, 0.82) !important;
+            line-height: 1.55;
+            font-size: 1.05rem;
+        }
+
+        .hero-trust {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.78);
+            font-style: italic;
+            max-width: 38rem;
+        }
+
+        .pp-section-muted {
+            background: var(--pp-bg);
+        }
+
+        .pp-strip {
+            background: var(--pp-bg);
+            border-top: 1px solid var(--pp-border);
+            border-bottom: 1px solid var(--pp-border);
+        }
+
+        .pp-label-caps {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pp-muted);
+        }
+
+        .pp-logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem 1.25rem;
+            padding: 0.35rem 0;
+        }
+
+        .pp-logo-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            min-width: 4.5rem;
+            padding: 0 0.4rem;
+        }
+
+        .pp-logo-row img {
+            max-height: 36px;
+            width: auto;
+            max-width: 100px;
+            object-fit: contain;
+            opacity: 0.88;
+            transition: opacity 0.2s ease;
+            filter: grayscale(0.2);
+        }
+
+        .pp-logo-row img:hover {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .client-container,
+        .partner-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem 1.5rem;
+        }
+
+        .client-container a,
+        .partner-container a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            padding: 0 0.65rem;
+        }
+
+        .client-container img {
+            max-height: 36px;
+            width: auto;
+            max-width: 120px;
+            object-fit: contain;
+            opacity: 0.88;
+            transition: opacity 0.2s ease;
+            filter: grayscale(0.12);
+        }
+
+        .client-container a:hover img {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .partner-container img {
+            max-height: 44px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            opacity: 0.88;
+            filter: grayscale(0.12);
+        }
+
+        .partner-container a:hover img {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .case-snapshot {
+            border: 1px solid var(--pp-border);
+            border-left: 4px solid var(--pp-accent);
+            background: var(--pp-surface);
+            box-shadow: 0 4px 28px rgba(26, 37, 64, 0.07);
+        }
+
+        .case-snapshot .case-body {
+            font-size: 1.0625rem;
+            line-height: 1.65;
+        }
+
+        .pp-prose-narrow {
+            max-width: 38rem;
+        }
+
+        .pp-pain-rule {
+            border-bottom: 1px solid var(--pp-border);
+        }
+
+        .pp-offers .row > .col-lg-4 {
+            display: flex;
+        }
+
+        .pp-offers .card {
+            border: 1px solid var(--pp-border);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 16px rgba(26, 37, 64, 0.06);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            width: 100%;
+        }
+
+        .pp-offers .card:hover {
+            border-color: #c5cfdf;
+            box-shadow: 0 12px 40px rgba(26, 37, 64, 0.1);
+        }
+
+        .pp-offers .card-body {
+            padding: 1.75rem 1.85rem !important;
+        }
+
+        .pp-offers .card-text:not(.small) {
+            line-height: 1.62;
+        }
+
+        .pp-offers .card-title {
+            color: var(--pp-navy);
+            font-weight: 600;
+        }
+
+        .pp-quote-card {
+            height: 100%;
+            background: var(--pp-surface);
+            border: 1px solid var(--pp-border);
+            border-radius: 0.75rem;
+            padding: 1.35rem 1.25rem 1.25rem;
+            box-shadow: 0 2px 10px rgba(26, 37, 64, 0.04);
+            text-align: left;
+        }
+
+        .pp-quote-card .quote-icon {
+            color: var(--pp-accent);
+            opacity: 0.45;
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .pp-quote-card .quote-text {
+            font-style: italic;
+            color: var(--pp-text);
+            opacity: 0.92;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .pp-about-photo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .pp-cta-footer {
+            border: 1px solid var(--pp-border);
+            background: var(--pp-surface);
+            box-shadow: 0 4px 24px rgba(26, 37, 64, 0.06);
+            max-width: 44rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pp-section {
+            padding-top: 4.25rem;
+            padding-bottom: 4.25rem;
+        }
+
+        .brand-kicker {
+            letter-spacing: 0.08em;
+        }
+
+        .text-secondary {
+            color: var(--pp-muted) !important;
+        }
+    </style>
+</head>
+
+<body class="pp-page">
+    <nav class="navbar navbar-expand-lg sticky-top pp-navbar py-2 py-lg-3">
+        <div class="container">
+            <a class="navbar-brand py-0" href="/" aria-label="Kuprava home">
+                <img class="pp-brand-logo" src="img/kuprava_connector_final.svg" alt="Kuprava - ERP integration and beyond">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="pp-nav-cluster ms-lg-auto">
+                    <a class="btn btn-primary"
+                        href="mailto:hello@kuprava.com?subject=20-minute%20call%20-%20where%20we%27re%20leaking%20time%20or%20money">Book a 20-min call</a>
+                    <ul class="navbar-nav flex-lg-row align-items-lg-center mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="tel:+18015106872"><i class="bi bi-telephone"></i> <b>+1 (801) 510-6872</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:hello@kuprava.com"><i class="bi bi-envelope"></i> <b>hello@kuprava.com</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="file/NetSuite_Developer_Nick_Kenner_2025-06-30.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-filetype-pdf"></i> <b>Resume</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-white">
+        <div class="container py-5" style="padding-top: 3.25rem; padding-bottom: 4rem;">
+            <div class="hero-content">
+                <p class="small text-white-50 text-uppercase fw-semibold mb-2 brand-kicker">Kuprava</p>
+                <h1 class="display-5 fw-bold">Your systems aren’t broken. They’re just not talking properly - and it’s costing you money.</h1>
+                <p class="lead fw-semibold text-white">If your NetSuite numbers don’t match reality, you don’t have a reporting problem - you have an integration problem.</p>
+                <p class="mb-4 hero-body-muted">Billing that won’t tie out. Inventory that lies. The same spreadsheet fixes every month. <strong class="text-white">Kuprava</strong> connects NetSuite to CRM, commerce, tax, and middleware so finance can trust the numbers again - without hiring another full-time firefighter.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="btn btn-light btn-lg"
+                        href="mailto:hello@kuprava.com?subject=20-minute%20call%20-%20where%20we%27re%20leaking%20time%20or%20money">Book a 20-min call <span aria-hidden="true">→</span></a>
+                    <a class="btn btn-outline-light btn-lg" href="tel:+18015106872">Call (801) 510-6872</a>
+                </div>
+                <p class="hero-trust mb-0">Clients usually bring us in after internal fixes, contractors, or off-the-shelf connectors stopped holding up in production.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="pp-section pp-section-muted border-bottom" aria-labelledby="pain-heading">
+        <div class="container">
+            <h2 id="pain-heading" class="h3 text-center fw-semibold mb-3">Sound familiar?</h2>
+            <p class="text-center col-lg-8 mx-auto mb-3 fs-5">The expensive problems usually look like this:</p>
+            <ul class="list-unstyled pp-prose-narrow mx-auto fs-5 mb-0 text-start">
+                <li class="mb-3 pb-3 pp-pain-rule"><strong>Systems that don’t sync</strong> - so nobody trusts the numbers.</li>
+                <li class="mb-3 pb-3 pp-pain-rule"><strong>Reporting leadership can’t rely on</strong> - so decisions happen in spreadsheets.</li>
+                <li class="mb-0"><strong>Automation that breaks under load</strong> - so your team cleans up the same mess every week.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pp-section bg-white" aria-labelledby="what-heading">
+        <div class="container">
+            <h2 id="what-heading" class="h3 text-center fw-semibold mb-4">Where we come in</h2>
+            <div class="col-lg-8 col-xl-7 mx-auto">
+                <p class="fs-5 mb-3 text-start">We’re who you call when NetSuite and the rest of your stack stop agreeing - integrations, workflows, fragile scripts, and the cloud behind them. <strong>Fixes that hold up in production (not just in a demo).</strong> Documented for the next person.</p>
+                <p class="text-secondary mb-0 text-start">Shipped across legal and financial services, energy, retail and hospitality, and healthcare billing.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="pp-strip py-4 py-lg-5">
+        <div class="container">
+            <p class="text-center pp-label-caps mb-4">Tools we work in</p>
+            <div class="pp-logo-row">
+                <span class="pp-logo-slot"><img src="img/python.svg" alt="Python"></span>
+                <span class="pp-logo-slot"><img src="img/MuleSoft-From-Salesforce-Logo-RGB.png" alt="MuleSoft"></span>
+                <span class="pp-logo-slot"><img src="img/salesforce_logo.png" alt="Salesforce"></span>
+                <span class="pp-logo-slot"><img src="img/NetSuite-logo-mobius.svg" alt="NetSuite"></span>
+                <span class="pp-logo-slot"><img src="img/aws_logo.png" alt="AWS"></span>
+                <span class="pp-logo-slot"><img src="img/git_logo.png" alt="Git"></span>
+                <span class="pp-logo-slot"><img src="img/shopify_logo_black.png" alt="Shopify"></span>
+            </div>
+        </div>
+    </div>
+
+    <section class="container pp-section pb-lg-5" aria-labelledby="how-heading">
+        <h2 id="how-heading" class="text-center mb-3 display-5 fw-semibold">How to work with Kuprava</h2>
+        <p class="text-center text-secondary col-lg-8 mx-auto mb-5">Fixed-scope engagements - you know what you’re buying, whether something’s on fire or you’re planning the next integration.</p>
+        <div class="row pp-offers g-4 justify-content-center">
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="h5 card-title">NetSuite stabilization</h3>
+                        <p class="card-text small text-secondary mb-2">Typical timeline: 2-3 weeks</p>
+                        <p class="card-text mb-0">We stabilize NetSuite without pulling your whole team off their day jobs: broken workflows, slow saves, dirty data, and fragile scripts that keep breaking. Approvals and cleanup so accounting trusts the books again.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="h5 card-title">Integration sprint</h3>
+                        <p class="card-text small text-secondary mb-2">Typical timeline: 1-2 weeks</p>
+                        <p class="card-text mb-0">We connect NetSuite to Salesforce, Shopify, Square, tax engines, or custom APIs - with MuleSoft, iPaaS, or direct APIs when that’s what actually works. Documented flows so your integrations aren’t trapped in one person’s head.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="h5 card-title">Cloud &amp; bigger builds</h3>
+                        <p class="card-text small text-secondary mb-2">Ongoing / larger programs</p>
+                        <p class="card-text mb-0">We design and build cloud-connected integrations when the fix isn’t only “inside NetSuite” - AWS (or Azure/GCP), APIs, data movement, and releases that don’t break billing or inventory. Built so you don’t get burned on security or compliance surprises later.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center pt-3">
+                <a class="btn btn-outline-primary btn-lg"
+                    href="mailto:hello@kuprava.com?subject=What%27s%20broken%20-%20scoped%20reply">What’s broken? Email Kuprava for a scoped reply</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container pp-section pt-4 pt-lg-5 mb-0" aria-labelledby="proof-heading">
+        <h2 id="proof-heading" class="visually-hidden">Proof</h2>
+        <div class="case-snapshot rounded-3 p-4 p-lg-5 mb-5">
+            <h3 class="h4 mb-4 fw-semibold">Example: wrong numbers between NetSuite and Salesforce</h3>
+            <div class="case-body text-secondary">
+                <p class="mb-3 text-body"><strong class="text-body">Problem.</strong> A professional services org’s invoices, credit memos, customers, and COGS didn’t match between NetSuite and Salesforce - finance was reconciling instead of closing.</p>
+                <p class="mb-3 text-body"><strong class="text-body">Approach.</strong> We delivered end-to-end integration on MuleSoft (Composer and Anypoint) plus SuiteScript 2.1 for the financial workflows - near real-time sync, testable middleware, and documentation auditors (and your next hire) can actually follow.</p>
+                <p class="mb-0 text-body"><strong class="text-body">Result.</strong> Roughly <strong>60% less</strong> manual correction work; recurring billing mismatches largely eliminated; ops and finance back on one set of numbers. <span class="text-secondary">(Representative of lead integration work at ProvenScale. Results vary based on system complexity and scope.)</span></p>
+            </div>
+        </div>
+        <h3 class="h5 text-center fw-semibold mb-3 mt-2">Organizations we’ve shipped for</h3>
+        <div class="client-container mb-5 pb-2">
+            <a href="https://www.aspensnowmass.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/aspen.png" alt="Aspen Snowmass">
+            </a>
+            <a href="https://www.bioliteenergy.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/biolite_logo.png" alt="BioLite">
+            </a>
+            <a href="https://www.ulabsystems.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/ulab_systems.svg" alt="uLab Systems">
+            </a>
+            <a href="https://www.amadorclub.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/amador_logo.png" alt="Amador Club">
+            </a>
+            <a href="https://maisoncorbeaux.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/maison-corbeaux.jpeg" alt="Maison Corbeaux">
+            </a>
+            <a href="https://www.huseby.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/huseby_logo.svg" alt="Huseby">
+            </a>
+            <a href="https://www.accela.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/accela.png" alt="Accela">
+            </a>
+            <a href="https://guardanthealth.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/guardant_health_logo.svg" alt="Guardant Health">
+            </a>
+        </div>
+        <h3 class="h5 text-center fw-semibold mb-4">Partner agencies</h3>
+        <div class="partner-container mb-0 pb-1">
+            <a href="https://www.expresstek.us/" target="_blank" rel="noopener noreferrer">
+                <img src="img/eXpressTek.jpg" alt="eXpressTek">
+            </a>
+            <a href="https://www.provenscale.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/proven_scale_logo.png" alt="ProvenScale">
+            </a>
+            <a href="https://www.systemsaccountants.com/" target="_blank" rel="noopener noreferrer">
+                <img src="img/SystemsAccountants.svg" alt="SystemsAccountants">
+            </a>
+        </div>
+    </section>
+
+    <div class="pp-strip">
+        <div class="container">
+            <div class="py-5">
+                <h2 class="display-6 mb-4 text-center fw-semibold">What clients say</h2>
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-sm-6 col-xl-3 d-flex">
+                        <div class="pp-quote-card">
+                            <i class="bi bi-chat-left-quote quote-icon" aria-hidden="true"></i>
+                            <p class="quote-text">"Fast worker and clean code. Nicolas delivered exactly what I was hoping for and was extremely easy to work with."</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 d-flex">
+                        <div class="pp-quote-card">
+                            <i class="bi bi-chat-left-quote quote-icon" aria-hidden="true"></i>
+                            <p class="quote-text">"Really enjoyed working with Nick. Helpful, diligent and resourceful. Would recommend."</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 d-flex">
+                        <div class="pp-quote-card">
+                            <i class="bi bi-chat-left-quote quote-icon" aria-hidden="true"></i>
+                            <p class="quote-text">"Very impressed with the way he communicated and executed the task. I am very pleased with the outcome. I truly have confidence in this freelancer thank you Nicolas."</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 d-flex">
+                        <div class="pp-quote-card">
+                            <i class="bi bi-chat-left-quote quote-icon" aria-hidden="true"></i>
+                            <p class="quote-text">"Did the job quickly and exactly how I wanted it. Thank you!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mb-5 pt-5 pb-2 justify-content-center align-items-lg-start">
+            <div class="col-12 text-center">
+                <h2 class="mb-2 display-6 fw-semibold">About Kuprava</h2>
+                <p class="text-secondary mb-4 fw-medium">Who you work with</p>
+            </div>
+            <div class="col-lg-5 mb-4 mb-lg-0 d-flex justify-content-center justify-content-lg-end pe-lg-4">
+                <img class="rounded-circle img-thumbnail pp-about-photo shadow-sm" src="img/nick.png"
+                    alt="Nick Kenner, founder and principal, Kuprava">
+            </div>
+            <div class="col-lg-7 pt-lg-1">
+                <ul class="fs-5 list-unstyled mb-0">
+                    <li class="mb-3 ps-3 border-start border-3" style="border-color: var(--pp-accent) !important;"><strong>Kuprava</strong> is a NetSuite integration practice focused on expensive gaps: systems that don’t sync, reporting nobody trusts, and automation that breaks under load.</li>
+                    <li class="mb-3 ps-3 border-start border-3" style="border-color: var(--pp-border) !important;"><strong>Nick Kenner</strong> is founder and principal. Clients work directly with him - not a rotating bench. He’s fluent with finance and IT: clear requirements, honest tradeoffs, and deliverables your team can run without tribal knowledge.</li>
+                    <li class="mb-0 ps-3 border-start border-3" style="border-color: var(--pp-border) !important;">Engagements are scoped rescues, integration sprints, and larger architecture work - the kind of problems that quietly drain payroll and credibility until they’re fixed.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="text-center py-4 px-4 px-lg-5 rounded-3 pp-cta-footer mb-2">
+            <p class="mb-3 fs-5">Book a <strong>20-minute call</strong> - we’ll walk through where your system is leaking time or money.</p>
+            <a class="btn btn-primary btn-lg"
+                href="mailto:hello@kuprava.com?subject=20-minute%20call%20-%20where%20we%27re%20leaking%20time%20or%20money">Book the 20-min call</a>
+        </div>
+        <footer class="text-center pt-4 mt-4" style="border-top: 1px solid var(--pp-border);">
+            <small class="text-secondary">Kuprava © <span id="copyright-year"></span>. All rights reserved.</small>
+        </footer>
+    </div>
+
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        function setCopyrightYear() {
+            var date = new Date();
+            var fullyear = date.getFullYear();
+            document.getElementById("copyright-year").innerHTML = fullyear;
+        }
+
+        setCopyrightYear();
+    </script>
+</body>
+
+</html>

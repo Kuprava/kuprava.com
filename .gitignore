@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / system
+Thumbs.db
+
+# Local dev
+.env
+.env.*

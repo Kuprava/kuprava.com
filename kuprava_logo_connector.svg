@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 320" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Kuprava connector logo</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Two nodes connected by a line representing system integration, with Kuprava wordmark</desc>
+
+  <defs>
+    
+  </defs>
+
+  <!-- Left node — filled square -->
+  <rect x="271" y="122" width="28" height="28" rx="3" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Connecting line with two small right-angle bends — like a circuit/data path -->
+  <polyline points="299,136 322,136 322,152 358,152 358,136 381,136" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill:none;stroke:rgb(232, 230, 224);color:rgb(255, 255, 255);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Right node — hollow square (different system) -->
+  <rect x="381" y="122" width="28" height="28" rx="3" stroke-width="2" style="fill:none;stroke:rgb(232, 230, 224);color:rgb(255, 255, 255);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- WORDMARK -->
+  <text x="340" y="224" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="400" letter-spacing="10" style="fill:rgb(232, 230, 224);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, &quot;Times New Roman&quot;, serif;font-size:28px;font-weight:400;text-anchor:middle;dominant-baseline:auto">KUPRAVA</text>
+
+  <!-- Tagline -->
+  <text x="340" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="10" letter-spacing="3" style="fill:rgb(107, 106, 102);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">ERP integration &amp; beyond</text>
+
+</svg>
